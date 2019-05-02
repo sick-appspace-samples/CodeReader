@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+    <application name="CodeReader">
+        <crown name="CodeReader">
+            <desc>user script</desc>
+            <serves/>
+        </crown>
+        <meta key="author">AppSpace Sample</meta>
+        <meta key="version">2.5.0</meta>
+        <meta key="licensed">false</meta>
+        <meta key="priority">low</meta>
+        <meta key="write-protected">false</meta>
+        <meta key="tags">Image,CodeReader</meta>
+        <meta key="read-protected">false</meta>
+        <meta key="copy-protected">false</meta>
+        <entry path="pages" default="Viewer.msdd">
+            <file type="application/zip">Viewer.msdd</file>
+        </entry>
+        <entry path="resources">
+            <file type="image">no_code.bmp</file>
+            <file type="image">QR_2Codes.bmp</file>
+            <file type="image">QR_HelloWorld.bmp</file>
+            <file type="image">QR_HelloWorldInv.bmp</file>
+            <file type="image">QR_withLogo.bmp</file>
+        </entry>
+        <entry path="scripts" default="CodeReader.lua">
+            <file type="text/x-lua">CodeReader.lua</file>
+        </entry>
+    </application>
+</manifest>
