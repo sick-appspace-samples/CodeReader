@@ -38,8 +38,7 @@ Image.CodeReader.QR.setCodeBackground(decoQR, 'Both')
 Image.CodeReader.setDecoder(deco, 'Append', decoQR)
 
 -- Creating a viewer instance
-local viewer = View.create()
-viewer:setID('viewer2D')
+local viewer = View.create("viewer2D1")
 
 local sDecoration = View.ShapeDecoration.create()
 View.ShapeDecoration.setLineColor(sDecoration, 0, 255, 0) -- green
