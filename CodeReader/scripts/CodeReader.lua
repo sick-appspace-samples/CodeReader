@@ -1,24 +1,4 @@
---[[----------------------------------------------------------------------------
 
-  Application Name:
-  CodeReader
-                                                                                             
-  Summary:
-  Reading QR Codes from local resource files
-  
-  Description:
-  Script loads periodically all images inside the 'resources' folder.
-  If there are codes successfully found in one of the images, the content
-  and coordinates of the codes are printed
-  
-  How to run:
-  The sample can be run using the SIM4000 emulator. The result is printed to the
-  console. The ImageView shows the images and marks the found codes.
-  Additional Images with QR codes can be placed in the resource folder.
-  
-  More Information:
-  See also Sample BarcodeReader for reading UPC/EAN codes
-------------------------------------------------------------------------------]]
 --Start of Global Scope---------------------------------------------------------
 
 local IMAGE_PATH = 'resources/'
@@ -66,7 +46,7 @@ local function handleNewImage(img, supplements)
   local origin = SensorData.getOrigin(supplements)
   print("Image: '" .. origin .. "'")
   -- Presenting the actual image in the image viewer
-  View.view(viewer, img)
+  View.addImage(viewer, img)
 
   -- Calling the decoder which returns all found codes
   local codes = Image.CodeReader.decode(deco, img)
@@ -84,7 +64,8 @@ local function handleNewImage(img, supplements)
     local str = string.format('%s - CX: %s, CY: %s, Content: "%s"', i, cx, cy, content)
     print(str)
     -- Viewing the region
-    View.view(viewer, region, sDecoration)
+    View.addShape(viewer, region, sDecoration)
+    View.present(viewer)
   end
 end
 Image.Provider.Directory.register(handle, 'OnNewImage', handleNewImage)
