@@ -18,17 +18,15 @@ Image.CodeReader.QR.setCodeBackground(decoQR, 'Both')
 Image.CodeReader.setDecoder(deco, 'Append', decoQR)
 
 -- Creating a viewer instance
-local viewer = View.create("viewer2D1")
+local viewer = View.create()
 
-local sDecoration = View.ShapeDecoration.create()
-View.ShapeDecoration.setLineColor(sDecoration, 0, 255, 0) -- green
+local sDecoration = View.ShapeDecoration.create():setLineColor(0, 255, 0) -- green
 
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
 
 --Declaration of the 'main' function as an entry point for the event loop
---@main()
 local function main()
   -- Starting provider after Engine.OnStarted event was received
   Image.Provider.Directory.start(handle)
@@ -37,9 +35,9 @@ end
 --Registration of the 'main' function to the 'Engine.OnStarted' event
 Script.register('Engine.OnStarted', main)
 
--- Definition of the callback function which is registered at the driver
--- img contains the image itself
--- supplements contains supplementary information about the image
+---Definition of the callback function which is registered at the driver
+---@param img Image contains the image itself
+---@param supplements SensorData contains supplementary information about the image
 local function handleNewImage(img, supplements)
   print('=====================================')
   -- Retrieving the file name from the supplementary data
